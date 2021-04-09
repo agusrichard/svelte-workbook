@@ -1,7 +1,11 @@
 <template>
-  <Layout>
-    <router-view />
-  </Layout>
+  <v-app>
+    <v-main>
+      <Layout>
+        <router-view />
+      </Layout>
+    </v-main>
+  </v-app>
 </template>
 
 <script>

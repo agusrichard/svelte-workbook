@@ -27,6 +27,8 @@ export default {
   padding: 20px;
   text-align: center;
   border-radius: 10px;
+  font-family: var(--font);
   background: var(--cultured);
+  color:hsla(241, 41%, 39%, 1);
 }
 </style>>

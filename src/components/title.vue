@@ -11,11 +11,11 @@ export default {
 
 <style scoped>
 h1 {
-  display: inline-block;
-  margin: 0 auto;
-  text-align: center;
-  border-bottom: 2px solid var(--dark-slate-blue);
   padding: 0 15px;
   font-size: 42px;
+  text-align: center;
+  display: inline-block;
+  margin: 0 auto 25px auto;
+  border-bottom: 2px solid var(--granny-smith-apple);
 }
 </style>
