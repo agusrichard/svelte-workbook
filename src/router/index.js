@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Welcome from '../views/welcome.vue'
 import Level1 from '../views/level1.vue'
 import Level2 from '../views/level2.vue'
 import Level3 from '../views/level3.vue'
+import Welcome from '../views/welcome.vue'
+import Congratulation from '../views/congratulation.vue'
 
 import store from '../store'
 
@@ -30,6 +31,11 @@ const routes = [
     path: '/level-3',
     name: 'Level3',
     component: Level3
+  },
+  {
+    path: '/congratulation',
+    name: 'Congratulation',
+    component: Congratulation
   }
 ]
 
