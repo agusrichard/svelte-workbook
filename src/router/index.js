@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 
 import Welcome from '../views/welcome.vue'
 import Level1 from '../views/level1.vue'
+import Level2 from '../views/level2.vue'
+import Level3 from '../views/level3.vue'
 
 import store from '../store'
 
@@ -18,6 +20,16 @@ const routes = [
     path: '/level-1',
     name: 'Level1',
     component: Level1
+  },
+  {
+    path: '/level-2',
+    name: 'Level2',
+    component: Level2
+  },
+  {
+    path: '/level-3',
+    name: 'Level3',
+    component: Level3
   }
 ]
 
@@ -29,12 +41,9 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   console.log('before each')
-  console.log('levels', store.state.levels)
   const foundIndex = store.state.levels.findIndex(element => element === false)
   const foundRoute = routes[foundIndex-1]
-  console.log('found', foundRoute)
-
-  console.log('from', from)
+  
   if (to.name === foundRoute.name) {
     next()
   } else {

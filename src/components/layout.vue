@@ -25,6 +25,7 @@ export default {
   width: 40%;
   height: 75%;
   padding: 20px;
+  overflow-y: auto;
   text-align: center;
   border-radius: 10px;
   font-family: var(--font);
