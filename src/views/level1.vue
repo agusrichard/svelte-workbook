@@ -16,25 +16,7 @@
       </div>
     </Container>
     <Button title="You sure?" @click="submit" />
-    <v-dialog
-      v-model="dialog"
-      width="500"
-    >
-      <v-card class="dialog">
-        <v-card-text class="dialog-text">
-          I am dissapointed. I thought you know me!
-        </v-card-text>
-
-        <v-card-actions>
-          <v-btn
-            color="primary"
-            @click="dialog = false"
-          >
-            Try Again
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <Dialog text="I am dissapointed. I thought you know me!" :dialog="dialog" @close="dialog = false"/>
   </div>
 </template>
 
@@ -42,10 +24,11 @@
 import store from '../store'
 import Title from '../components/title'
 import Button from '../components/button'
+import Dialog from '../components/dialog'
 import Container from '../components/container'
 
 export default {
-  components: { Title, Container, Button },
+  components: { Title, Container, Button, Dialog },
   methods: {
     submit() {
       console.log('this.radioGroup', this.radioGroup)
@@ -53,6 +36,7 @@ export default {
         store.dispatch('setLevels', { index: 2 })
         this.$router.push({ name: 'Level2' })
       } else {
+        this.radioGroup = [null, null, null, null, null, null, null]
         this.dialog = !this.dialog
       }
     }

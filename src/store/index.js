@@ -10,7 +10,8 @@ const vuexLocal = new VuexPersistence({
 
 export default new Vuex.Store({
   state: {
-    levels: [true, false, false, false, false]
+    levels: [true, false, false, false, false],
+    hope: ''
   },
   mutations: {
     setLevels(state, index) {
@@ -18,12 +19,17 @@ export default new Vuex.Store({
       const newLevels = [...state.levels]
       newLevels[index] = true
       state.levels = newLevels
+    },
+    setHope(state, hope) {
+      state.hope = hope
     }
   },
   actions: {
     setLevels({ commit }, payload) {
-      console.log('index', payload.index)
       commit('setLevels', payload.index)
+    },
+    setHope({ commit }, payload) {
+      commit('setHope', payload.hope)
     }
   },
   modules: {
