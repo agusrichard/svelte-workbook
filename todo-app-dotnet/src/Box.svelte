@@ -1,16 +1,26 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
+  const dispatch = createEventDispatcher();
+
   export let message;
   let shouldSayHello = false;
 
   const handleClick = () => {
     shouldSayHello = !shouldSayHello;
   };
+
+  const changeMessage = () => {
+    dispatch("dispatchMe", "Greetings from Svelte!");
+  };
 </script>
 
 <div class="box">
+  <slot />
   <h1 class:hello={shouldSayHello}>{message}</h1>
   <button on:click={handleClick}>Click me</button>
   <button on:click>What?</button>
+  <button on:click={changeMessage}>Dispatch me</button>
 </div>
 
 <style>

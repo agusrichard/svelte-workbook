@@ -24,10 +24,16 @@
   const changeMessage = () => {
     message = "Hello World";
   };
+
+  const dispatchMe = (msg) => {
+    message = msg.detail;
+  };
 </script>
 
 <main>
-  <Box {message} on:click|once={changeMessage} />
+  <Box {message} on:click|once={changeMessage} on:dispatchMe={dispatchMe}>
+    Happy to see you
+  </Box>
   {#each people as person}
     <div>
       <h1>{person.name}</h1>
