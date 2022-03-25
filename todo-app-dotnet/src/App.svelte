@@ -1,22 +1,40 @@
 <script>
-  let name = "";
-  let age = null || "";
+  import Box from "./Box.svelte";
 
-  $: greet =
-    name && age ? `Hello, my name is ${name} and I'm ${age} years old.` : "";
+  let people = [
+    {
+      name: "John",
+      age: 30,
+    },
+    {
+      name: "Jane",
+      age: 20,
+    },
+    {
+      name: "Jim",
+      age: 10,
+    },
+  ];
 
-  const handleInput = (e) => {
-    name = e.target.value;
+  const handleClick = (person) => {
+    people = people.filter((p) => p.name !== person.name);
   };
 </script>
 
 <main>
-  <h1>Hello World!!</h1>
-  <p>Name: {name}</p>
-  <p>Age: {age}</p>
-  <p>{greet}</p>
-  <input type="text" placeholder="Enter your name" on:input={handleInput} />
-  <input type="number" placeholder="Enter your age" bind:value={age} />
+  <Box />
+  {#each people as person}
+    <div>
+      <h1>{person.name}</h1>
+      <p>{person.age}</p>
+      {#if person.age > 20}
+        I am so old
+      {/if}
+      <button on:click={() => handleClick(person)}>Delete me</button>
+    </div>
+  {:else}
+    <p>No people</p>
+  {/each}
 </main>
 
 <style>
@@ -30,7 +48,7 @@
   h1 {
     color: #ff3e00;
     text-transform: uppercase;
-    font-size: 4em;
+    font-size: 1em;
     font-weight: 100;
   }
 
