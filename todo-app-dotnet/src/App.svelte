@@ -1,6 +1,7 @@
 <script>
   import Box from "./Box.svelte";
 
+  let message = "Hello!";
   let people = [
     {
       name: "John",
@@ -19,10 +20,14 @@
   const handleClick = (person) => {
     people = people.filter((p) => p.name !== person.name);
   };
+
+  const changeMessage = () => {
+    message = "Hello World";
+  };
 </script>
 
 <main>
-  <Box />
+  <Box {message} on:click|once={changeMessage} />
   {#each people as person}
     <div>
       <h1>{person.name}</h1>
