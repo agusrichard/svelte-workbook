@@ -1,12 +1,22 @@
 <script>
+  let name = "";
+  let age = null || "";
+
+  $: greet =
+    name && age ? `Hello, my name is ${name} and I'm ${age} years old.` : "";
+
+  const handleInput = (e) => {
+    name = e.target.value;
+  };
 </script>
 
 <main>
   <h1>Hello World!!</h1>
-  <p>
-    Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-    how to build Svelte apps.
-  </p>
+  <p>Name: {name}</p>
+  <p>Age: {age}</p>
+  <p>{greet}</p>
+  <input type="text" placeholder="Enter your name" on:input={handleInput} />
+  <input type="number" placeholder="Enter your age" bind:value={age} />
 </main>
 
 <style>
